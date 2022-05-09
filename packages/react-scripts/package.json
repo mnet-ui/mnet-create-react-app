@@ -1,5 +1,5 @@
 {
-  "name": "react-scripts",
+  "name": "@mnet-ui/react-scripts",
   "version": "5.0.1",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
@@ -13,6 +13,9 @@
   },
   "bugs": {
     "url": "https://github.com/facebook/create-react-app/issues"
+  },
+  "publishConfig": {
+    "@mnet-ui:registry": "http://npm.internal.media.net/repository/npm-internal/"
   },
   "files": [
     "bin",
