@@ -453,6 +453,49 @@ module.exports = function (webpackEnv) {
                   isEnvDevelopment &&
                     shouldUseReactRefresh &&
                     require.resolve('react-refresh/babel'),
+                  [
+                    require('babel-plugin-transform-imports'),
+                    {
+                      lodash: {
+                        transform: importName => `lodash/${importName}`,
+                        preventFullImport: true,
+                      },
+                      'lodash-es': {
+                        transform: importName => `lodash-es/${importName}`,
+                        preventFullImport: true,
+                      },
+                      grommet: {
+                        transform: importName =>
+                          `grommet/es6/components/${importName}`,
+                        preventFullImport: true,
+                        skipDefaultConversion: true,
+                      },
+                      'grommet/contexts': {
+                        transform: importName =>
+                          `grommet/es6/contexts/${importName}`,
+                        preventFullImport: true,
+                        skipDefaultConversion: true,
+                      },
+                      'grommet-icons': {
+                        transform: importName =>
+                          `grommet-icons/es6/icons/${importName}`,
+                        preventFullImport: true,
+                        skipDefaultConversion: true,
+                      },
+                      'mnet-icons/hb': {
+                        transform: importName =>
+                          `mnet-icons/dist/es6/icons/hb/${importName}`,
+                        preventFullImport: true,
+                        skipDefaultConversion: true,
+                      },
+                      'mnet-icons/neo': {
+                        transform: importName =>
+                          `mnet-icons/dist/es6/icons/neo/${importName}`,
+                        preventFullImport: true,
+                        skipDefaultConversion: true,
+                      },
+                    },
+                  ],
                 ].filter(Boolean),
                 // This is a feature of `babel-loader` for webpack (not Babel itself).
                 // It enables caching results in ./node_modules/.cache/babel-loader/
