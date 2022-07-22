@@ -1,5 +1,5 @@
 {
-  "name": "@mnet-ui/react-scripts",
+  "name": "@mnet-ui/react-scripts-single-spa",
   "version": "5.0.2",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
@@ -73,6 +73,7 @@
     "semver": "^7.3.5",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
+    "systemjs-webpack-interop": "^2.3.7",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
     "webpack": "^5.64.4",
