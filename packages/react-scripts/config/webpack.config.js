@@ -15,6 +15,7 @@ const resolve = require('resolve');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ExposeRuntimeCssAssetsPlugin = require('single-spa-css/ExposeRuntimeCssAssetsPlugin.cjs');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
@@ -216,7 +217,7 @@ module.exports = function (webpackEnv) {
       pathinfo: isEnvDevelopment,
       // There will be one main bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
-      filename: `@${process.env.PROJECT_NAME || 'mnet'}/${process.env.APP_NAME || path.basename(process.cwd())}.js`,
+      filename: `${process.env.APP_NAME || path.basename(process.cwd())}.js`,
       // There are also additional JS chunk files if you use code splitting.
       chunkFilename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].chunk.js'
@@ -225,7 +226,7 @@ module.exports = function (webpackEnv) {
       // webpack uses `publicPath` to determine where the app is being served from.
       // It requires a trailing slash, or the file assets will get an incorrect path.
       // We inferred the "public path" (such as / or /my-project) from homepage.
-      publicPath: 'auto',
+      publicPath: paths.publicUrlOrPath,
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: isEnvProduction
         ? info =>
@@ -653,7 +654,7 @@ module.exports = function (webpackEnv) {
     },
     plugins: [
       new SystemJSPublicPathPlugin({
-        systemjsModuleName: `@${process.env.PROJECT_NAME || 'mnet'}/${process.env.APP_NAME || path.basename(process.cwd())}`,
+        systemjsModuleName: `${process.env.APP_NAME || path.basename(process.cwd())}`,
       }),
       // This gives some necessary context to module not found errors, such as
       // the requesting resource.
@@ -679,6 +680,11 @@ module.exports = function (webpackEnv) {
         new MiniCssExtractPlugin({
           // Options similar to the same options in webpackOptions.output
           // both options are optional
+          filename: 'static/css/[name].[contenthash:8].css',
+          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+        }),
+        new ExposeRuntimeCssAssetsPlugin({
+          // The filename here must match the filename for the MiniCssExtractPlugin
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
         }),
@@ -806,5 +812,6 @@ module.exports = function (webpackEnv) {
     // our own hints via the FileSizeReporter
     performance: false,
     ignoreWarnings: [/Failed to parse source map/],
+    externals: ['react', 'react-dom']
   };
 };

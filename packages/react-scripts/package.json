@@ -1,6 +1,6 @@
 {
   "name": "@mnet-ui/react-scripts-single-spa",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
@@ -69,8 +69,10 @@
     "react-refresh": "^0.11.0",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^4.0.0",
+    "sass": "^1.54.9",
     "sass-loader": "^12.3.0",
     "semver": "^7.3.5",
+    "single-spa-css": "^2.0.0",
     "source-map-loader": "^3.0.0",
     "style-loader": "^3.3.1",
     "systemjs-webpack-interop": "^2.3.7",

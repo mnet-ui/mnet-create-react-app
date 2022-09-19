@@ -34,6 +34,7 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const printBuildError = require('react-dev-utils/printBuildError');
+const systemjsInterop = require("systemjs-webpack-interop/webpack-config");
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
@@ -142,8 +143,9 @@ checkBrowsers(paths.appPath, isInteractive)
 // Create the production build and print the deployment instructions.
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
+  // systemjsInterop.modifyWebpackConfig(webpack(config));
 
-  const compiler = webpack(config);
+  const compiler = systemjsInterop.modifyWebpackConfig(webpack(config));
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
       let messages;
