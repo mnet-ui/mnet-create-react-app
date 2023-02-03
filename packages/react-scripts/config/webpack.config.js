@@ -482,15 +482,15 @@ module.exports = function (webpackEnv) {
                         preventFullImport: true,
                         skipDefaultConversion: true,
                       },
-                      'mnet-icons/hb': {
+                      '@mnet-ui/icons/hb': {
                         transform: importName =>
-                          `mnet-icons/dist/es6/icons/hb/${importName}`,
+                          `@mnet-ui/icons/dist/icons/hb/${importName}`,
                         preventFullImport: true,
                         skipDefaultConversion: true,
                       },
-                      'mnet-icons/neo': {
+                      '@mnet-ui/icons/neo': {
                         transform: importName =>
-                          `mnet-icons/dist/es6/icons/neo/${importName}`,
+                          `@mnet-ui/icons/dist/icons/neo/${importName}`,
                         preventFullImport: true,
                         skipDefaultConversion: true,
                       },
