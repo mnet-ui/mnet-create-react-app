@@ -494,6 +494,24 @@ module.exports = function (webpackEnv) {
                         preventFullImport: true,
                         skipDefaultConversion: true,
                       },
+                      'react-router': {
+                        transform: 'react-router/${member}',
+                        preventFullImport: true
+                      },
+                      'react-bootstrap': {
+                        transform: 'react-bootstrap/lib/${member}',
+                        preventFullImport: true
+                      },
+                      'mnet-icons/neo': {
+                        transform: 'mnet-icons/dist/es6/icons/neo/${member}',
+                        preventFullImport: true,
+                        skipDefaultConversion: true
+                      },
+                      'mnet-icons/hb': {
+                        transform: 'mnet-icons/dist/es6/icons/hb/${member}',
+                        preventFullImport: true,
+                        skipDefaultConversion: true
+                      }
                     },
                   ],
                 ].filter(Boolean),
