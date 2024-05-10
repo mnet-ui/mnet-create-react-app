@@ -1,6 +1,6 @@
 {
   "name": "@mnet-ui/react-scripts",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "description": "Configuration and scripts for Create React App.",
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
+    "babel-plugin-react-append-displayname": "^1.0.2",
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-preset-react-app": "^10.0.1",
     "bfj": "^7.0.2",
